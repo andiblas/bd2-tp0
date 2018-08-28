@@ -4,33 +4,47 @@ DROP TABLE IF EXISTS paises;
 DROP TABLE IF EXISTS continentes;
 
 CREATE TABLE continentes(
-	idContinente SERIAL PRIMARY KEY,
+	idContinente int not null,
 	nombre varchar(30)
 	);
-
+	
 CREATE TABLE paises(
-	idPais SERIAL PRIMARY KEY,
+	idPais int not null,
 	nombre varchar(30),
 	independencia date,
 	idContinente int,
-	forma_de_gobierno varchar(30),
-	poblacion_estimada int,
-	FOREIGN KEY (idContinente) REFERENCES continentes(idContinente)
+	forma_de_gobierno varchar(50),
+	poblacion_estimada int
 	);
 
 CREATE TABLE censos(
-	idCenso SERIAL PRIMARY KEY,
+	idCenso SERIAL,
 	idPais int,
 	anio int,
-	poblacion int,
-	FOREIGN KEY (idPais) REFERENCES paises(idPais)
+	poblacion int
 	);
 	
 CREATE TABLE fronteras(
-	idFrontera SERIAL PRIMARY KEY,
+	idFrontera SERIAL,
 	idPais1 int,
 	idPais2 int,
-	extension_km int,
-	FOREIGN KEY (idPais1) REFERENCES paises(idPais),
-	FOREIGN KEY (idPais2) REFERENCES paises(idPais)
+	extension_km int
 	);
+
+ALTER TABLE continentes add PRIMARY KEY (idContinente);
+
+ALTER TABLE paises add PRIMARY KEY (idPais);
+ALTER TABLE paises add FOREIGN KEY (idContinente) REFERENCES continentes(idContinente);
+
+ALTER TABLE censos add PRIMARY KEY (idCenso);
+ALTER TABLE censos add FOREIGN KEY (idPais) REFERENCES paises(idPais);
+
+ALTER TABLE fronteras add PRIMARY KEY (idFrontera);
+ALTER TABLE fronteras add FOREIGN KEY (idPais1) REFERENCES paises(idPais);
+ALTER TABLE fronteras add FOREIGN KEY (idPais2) REFERENCES paises(idPais);
+
+
+copy continentes from 'C:\Users\Public\Documents\Datos_paises - Continente.csv' delimiter ',' csv header;
+copy paises from 'C:\Users\Public\Documents\Datos_paises - Pais.csv' delimiter ',' csv header;
+copy censos (idPais, anio, poblacion) from 'C:\Users\Public\Documents\Datos_paises - Censo.csv' delimiter ',' csv header;
+copy fronteras (idPais1, idPais2, extension_km) from 'C:\Users\Public\Documents\Datos_paises - Frontera.csv' delimiter ',' csv header;
