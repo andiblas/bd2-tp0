@@ -1,12 +1,19 @@
 --funcion poblacion de continente especifico
-create or replace function get_pop_by_continent(continente integer) returns bigint
-as
+
+drop function get_pop_by_continent(integer);
+
+create or replace function 
+get_pop_by_continent(continente integer) returns float as
 $$
 
-select sum(poblacion_estimada) as total from paises
-where idContinente = continente
+select 
+	sum(poblacion_estimada_actual) as total 
+from 
+	view_poblacion
+where 
+	idContinente = continente
 
 $$
-Language SQL
+Language SQL;
 
--- select get_pop_by_continent(1)
+--select get_pop_by_continent(5);
