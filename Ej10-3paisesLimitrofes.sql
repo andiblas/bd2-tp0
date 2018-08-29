@@ -39,3 +39,4 @@ select p1.nombre, p2.nombre, p3.nombre from paises p1, paises p2, paises p3
 	and p1.idPais < p2.idPais
 	and p2.idPais < p3.idPais																 
 ;
+ 
