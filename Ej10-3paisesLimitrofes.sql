@@ -1,6 +1,6 @@
 --query conjunto de 3 paises limitrofes con triple join
 
-select p1.nombre, p2.nombre, p3.nombre, p4.nombre, p5.nombre, p6.nombre from
+select p1.nombre, p2.nombre, p3.nombre from
 
 (select f1.idPais1 as pais1, f2.idPais2 as pais2, f2.idPais1 as pais3, f2.idPais2 as pais4, f3.idPais1 as pais5,
  f3.idPais2 as pais6 from fronteras as f1
