@@ -1,0 +1,1 @@
+create index on fronteras (idPais1, idPais2);
