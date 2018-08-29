@@ -1,9 +1,9 @@
 --funcion poblacion de continente especifico
 
-drop function get_pop_by_continent(integer);
+drop function if exists get_pop_by_continent(integer);
 
 create or replace function 
-get_pop_by_continent(continente integer) returns float as
+get_pop_by_continent(continente integer) returns bigint as
 $$
 
 select 
