@@ -6,7 +6,7 @@ create view view_poblacion as
 
 select
 	p.idcontinente, p.nombre, u.ultimo_censo, c.poblacion as poblacion_censo,
-	c.poblacion * power(get_pop_variation_rate(p.idpais), date_part('year', CURRENT_DATE) - u.ultimo_censo) as poblacion_estimada_actual 
+	(c.poblacion * power(get_pop_variation_rate(p.idpais), date_part('year', CURRENT_DATE) - u.ultimo_censo))::integer as poblacion_estimada_actual 
 from
 (select 
 	p.idpais, max(c.anio) as ultimo_censo from censos as c
