@@ -1,6 +1,6 @@
 --- ultimos censos por pais
 
-drop view view_poblacion;
+drop view if exists view_poblacion;
 
 create view view_poblacion as
 
