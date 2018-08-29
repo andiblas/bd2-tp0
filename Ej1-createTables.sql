@@ -42,9 +42,3 @@ ALTER TABLE censos add FOREIGN KEY (idPais) REFERENCES paises(idPais);
 ALTER TABLE fronteras add PRIMARY KEY (idFrontera);
 ALTER TABLE fronteras add FOREIGN KEY (idPais1) REFERENCES paises(idPais);
 ALTER TABLE fronteras add FOREIGN KEY (idPais2) REFERENCES paises(idPais);
-
-
-copy continentes from 'C:\Users\Public\Documents\Datos_paises - Continente.csv' delimiter ',' csv header;
-copy paises from 'C:\Users\Public\Documents\Datos_paises - Pais.csv' delimiter ',' csv header;
-copy censos (idPais, anio, poblacion) from 'C:\Users\Public\Documents\Datos_paises - Censo.csv' delimiter ',' csv header;
-copy fronteras (idPais1, idPais2, extension_km) from 'C:\Users\Public\Documents\Datos_paises - Frontera.csv' delimiter ',' csv header;
