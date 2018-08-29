@@ -3,7 +3,7 @@ or replace
 function get_pop_variation_rate( idpais integer ) returns double precision as $$
 
 select
-	(c1.poblacion / c1.anio)::float / (c2.poblacion / c2.anio)::float
+	power(c1.poblacion::float / c2.poblacion::float, (1 / (c1.anio - c2.anio)::float)) as result1
 from
 	censos c1,
 	censos c2
