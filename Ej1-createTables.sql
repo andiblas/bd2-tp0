@@ -12,7 +12,7 @@ CREATE TABLE continentes(
 	
 CREATE TABLE paises(
 	idPais int not null,
-	nombre varchar(30),
+	nombre varchar(50),
 	independencia date,
 	idContinente int,
 	forma_de_gobierno varchar(50),
